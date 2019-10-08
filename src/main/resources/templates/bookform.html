@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Input Form</title>
+
+    <!-- Link to the bootstrap stylesheet:  insert this just before the </head> tag  (this version fits on a page) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <!-- END Link to the bootstrap stylesheet -->
+</head>
+<style>
+    hr {
+        display: block;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        margin-left: auto;
+        margin-right: auto;
+        border-style: inset;
+        border-width: 5px;
+    }
+</style>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Jobs-<span style="font-size:30px">&#x1D19;</span>-Us</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">List Jobs</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/add">Add Jobs<span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+
+            <div th:replace="base :: userSearchNavBtn"></div>
+
+            <div th:replace="base :: titleSearchNavBtn"></div>
+
+        </div>
+    </nav>
+    <!-- End Navigation Bar -->
+
+    <!-- Process HTML Page -->
+    <div class="container">
+        <div th:replace="base :: header"></div>
+        <h2>Book Input Form</h2>
+        <br />
+        <form th:action="@{/process}" th:object="${book}" method="post">
+            <input type="hidden" th:field="*{id}" />
+<!--^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +  -->
+            <div class="row">
+                <div class="col-md-3"><b>Title:</b></div>
+                <div class="col-md-9"><label for="title"></label><input id="title" type="text" placeholder="Title" th:field="*{title}" /></div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-3"><b>Author:</b></div>
+                <div class="col-md-9"><label for="author"></label><input id="author" type="text" placeholder="Author" th:field="*{author}" /></div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-3"><b>Price:</b></div>
+                <div class="col-md-9"><label for="price"></label><input id="price" type="text" placeholder="Price" th:field="*{price}" /></div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-3"><b>SKU Number:</b></div>
+                <div class="col-md-9"><label for="sku"></label><input id="sku" type="text" placeholder="SKU" th:field="*{sku}" /></div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-3"><b> Book Description:</b></div>
+                <div class="col-md-9"><label for="desc"></label><textarea id="desc" rows="3" cols="50" th:field="*{description}"></textarea></div>
+            </div>
+            <input type="submit" onclick="alerts()" value="Submit">
+        </form>
+        <hr>
+        <div th:replace="base :: footer"></div>
+    </div>
+    <!-- End Process HTML Page-->
+
+    <!-- JS code: insert this just before the </body> tag -->
+    <div th:replace="base :: jsFooter"></div>
+</body>
+</html>
