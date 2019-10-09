@@ -19,8 +19,8 @@
 <div th:fragment="userSearch">
     <br />
     <div>
-        <form th:action="@{/proc_user_search}" method="post">
-            <label for="eyn">Enter Your Name</label><input type="text" id="eyn" placeholder="Enter Your Name" name="search">
+        <form th:action="@{/processAuthor}" method="post">
+            <label for="eyn">Author's name</label><input type="text" id="eyn" placeholder="Author Name" name="search">
             <button type="submit">Retrieve Your books</button>
         </form>
     </div>
@@ -63,14 +63,14 @@
 </div>
 
 <div th:fragment="userSearchNavBtn">
-    <form class="form-inline my-2 my-lg-0" th:action="@{/proc_user_search}" method="post">
+    <form class="form-inline my-2 my-lg-0" th:action="@{/processAuthor}" method="post">
         <input class="form-control mr-sm-2" type="search" placeholder="Enter Author Name" aria-label="Search Author" name="search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Retrieve By Author</button>
     </form>
 </div>
 
 <div th:fragment="titleSearchNavBtn">
-    <form class="form-inline my-2 my-lg-0" th:action="@{/procsearch}" method="post">
+    <form class="form-inline my-2 my-lg-0" th:action="@{/processTitle}" method="post">
         <input class="form-control mr-sm-2" type="search" placeholder="Enter Book Title" aria-label="Search Title" name="search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rrtrieve By Title</button>
     </form>

@@ -73,9 +73,13 @@
                 <div class="col-md-3"><b>SKU Number:</b></div>
                 <div class="col-md-9"><label for="sku"></label><input id="sku" type="text" placeholder="SKU" th:field="*{sku}" /></div>
             </div>
+            <div class="row">
+                <div class="col-md-3"><b>In Stock:</b></div>
+                <div class="col-md-9"><label for="instock"></label><input id="instock" type="text" placeholder="InStock" th:field="*{inStock}" /></div>
+            </div>
             <br />
             <div class="row">
-                <div class="col-md-3"><b> Book Description:</b></div>
+                <div class="col-md-3"><b>Book Description:</b></div>
                 <div class="col-md-9"><label for="desc"></label><textarea id="desc" rows="3" cols="50" th:field="*{description}"></textarea></div>
             </div>
             <input type="submit" onclick="alerts()" value="Submit">

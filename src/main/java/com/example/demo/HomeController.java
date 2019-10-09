@@ -16,7 +16,7 @@ public class HomeController {
 
     @RequestMapping("/")
     public String listBooks(Model model) {
-        model.addAttribute("book", bookRepository);
+        model.addAttribute("books", bookRepository);
         return "list";
     }
 
@@ -37,13 +37,13 @@ public class HomeController {
 
     @PostMapping("/processAuthor")
     public String processAuthorSearch(Model model, @RequestParam(name="search") String search) {
-        model.addAttribute("book", bookRepository.findBookByAuthor(search));
+        model.addAttribute("books", bookRepository.findBookByAuthor(search));
         return "searchlist";
     }
 
     @PostMapping("/processTitle")
     public String processTitleSearch(Model model, @RequestParam(name="search") String search) {
-        model.addAttribute("book", bookRepository.findBookByTitle(search));
+        model.addAttribute("books", bookRepository.findBookByTitle(search));
         return "searchlist";
     }
 

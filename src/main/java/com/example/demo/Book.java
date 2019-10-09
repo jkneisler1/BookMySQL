@@ -12,21 +12,21 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @NotNull
+    // @NotNull
     private String sku;
 
-    @NotNull
+   // @NotNull
     private String title;
 
-    @NotNull
+    // @NotNull
     private String author;
 
     private String description;
 
-    @NotNull
+    // @NotNull
     private Double price;
 
-    @NotNull
+    // @NotNull
     private Boolean inStock;
 
 
