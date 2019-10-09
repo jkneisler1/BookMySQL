@@ -51,17 +51,34 @@
         <h2>Search Books</h2>
         <br />
         <form th:action="@{/processTitle}" method="post">
-            <label for="sbt">Search By Title</label><input id="sbt" type="text" placeholder="Search By Title" name="search" />
+            <label for="sbt"></label><input id="sbt" type="text" placeholder="Search By Title" name="search" />
             <button type="submit">Search</button>
         </form>
         <br />
         <h2>Listing of All Books</h2>
         <br />
         <div th:each="book : ${books}">
-            <div th:replace="base :: displayInfo"></div>
+            <div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3"><b>Title:</b></div>
+                    <div class="col-md-9" th:text="${book.title}"></div>
+<!--^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +  -->
+                </div>
+                <div class="row">
+                    <div class="col-md-3"><b>Author:</b></div>
+                    <div class="col-md-9" th:text="${book.author}"></div>
+                </div>
+            </div>
         </div>
         <hr>
         <div th:replace="base :: userSearch"></div>
+        <div>
+            <form action="/returnProcess" method="post">
+            <label for="mbs"></label><input type="text" id="mbs" placeholder="Manage Books" name="search">
+            <button type="submit">Manage Book Inventory</button>
+            </form>
+        </div>
         <div th:replace="base :: footer"></div>
     </div>
     <!-- End Process HTML Page-->

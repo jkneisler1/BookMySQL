@@ -20,8 +20,8 @@
     <br />
     <div>
         <form th:action="@{/processAuthor}" method="post">
-            <label for="eyn">Author's name</label><input type="text" id="eyn" placeholder="Author Name" name="search">
-            <button type="submit">Retrieve Your books</button>
+            <label for="eyn"></label><input type="text" id="eyn" placeholder="Author Name" name="search">
+            <button type="submit">Retrieve Books</button>
         </form>
     </div>
     <br />
@@ -33,6 +33,7 @@
     <div class="row">
         <div class="col-md-3"><b>Title:</b></div>
         <div class="col-md-9" th:text="${book.title}"></div>
+<!--^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +  -->
     </div>
     <p>
     <div class="row">
@@ -41,14 +42,16 @@
     </div>
     <p>
     <div class="row">
-        <div th:if="${book.inStock}">
+        <div class="col-md-3"><b>Price:</b></div>
+        <div class="col-md-9"><span th:inline="text">$ [[${#numbers.formatDecimal(book.price, 0, 'COMMA', 2, 'POINT')}]]</span></div>
+        <!-- <div th:if="${book.inStock}">
             <div class="col-md-3"><b>Price:</b></div>
-            <div class="col-md-9" th:number="${book.price)}"></div>
+            <div class="col-md-9" th:number="${book.price}"></div>
         </div>
         <div th:unless="${book.inStock}">
             <div class="col-md-3"><b>Price:</b></div>
-            <div class="col-md-9">Not Available</div>
-        </div>
+            <div class="col-md-9" text="Not Available"></div>
+        </div> -->
     </div>
     <p>
     <div class="row">

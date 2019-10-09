@@ -16,7 +16,7 @@ public class HomeController {
 
     @RequestMapping("/")
     public String listBooks(Model model) {
-        model.addAttribute("books", bookRepository);
+        model.addAttribute("books", bookRepository.findAll());
         return "list";
     }
 
@@ -27,10 +27,22 @@ public class HomeController {
     }
 
     @PostMapping("/process")
-    public String processForm(@Valid Book book, BindingResult result) {
-        if (result.hasErrors()) {
+    public String processForm(@ModelAttribute  Book book, @RequestParam(name="inStock") String inStock, BindingResult result) {
+        /**if (result.hasErrors()) {                               // Check for errors
             return "bookform";
         }
+        */
+        if (inStock.equalsIgnoreCase("yes")) {      // Convert the HTML string inStock to a boolean
+            book.setInStock(true);
+        }
+        else {
+            book.setInStock(false);
+        }
+
+        if (result.hasErrors()) {                               // Check for errors
+            return "bookform";
+        }
+
         bookRepository.save(book);
         return "redirect:/";
     }
@@ -47,9 +59,9 @@ public class HomeController {
         return "searchlist";
     }
 
-    @RequestMapping(value="/managebooks/{id}", params="action")
+    @RequestMapping(value="/managebooks/{id}", method=RequestMethod.POST, params="action")
     public String manageBooks(@PathVariable("id") long id, Model model, @RequestParam(value="action") String action) {
-        String returnStr = "redirect:/";
+        String returnStr = "";
 
         if (action.equals("edit")) {
             if (bookRepository.findById(id).isPresent()) {
@@ -59,6 +71,7 @@ public class HomeController {
         }
         else if (action.equals("delete")) {
             bookRepository.deleteById(id);
+            returnStr = "redirect:/";
         }
         else if (action.equals("details")) {
             if (bookRepository.findById(id).isPresent()) {

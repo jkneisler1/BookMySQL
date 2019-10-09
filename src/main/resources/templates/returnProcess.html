@@ -22,19 +22,19 @@
     }
 </style>
 <body>
-    <!-- Navigation Bar -->
+    <!-- Navigation Bar -- >
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Jobs-<span style="font-size:30px">&#x1D19;</span>-Us</a>
+        <a class="navbar-brand" href="#">Books-<span style="font-size:30px">&#x1D19;</span>-Us</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/">List Jobs</a>
+                    <a class="nav-link" href="/">List Books</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/add">Add Jobs</a>
+                    <a class="nav-link" href="/add">Add Books</a>
                 </li>
             </ul>
 
@@ -43,20 +43,21 @@
             <div th:replace="base :: titleSearchNavBtn"></div>
         </div>
     </nav>
-    <!-- End Navigation Bar -->
+    < !-- End Navigation Bar -->
 
     <!-- Process HTML Page -->
     <div class="container">
         <div th:replace="base :: header"></div>
         <br />
-        <h2>Manage Your Jobs</h2>
+        <h2>Manage Book Inventory</h2>
         <br />
         <div th:each="book : ${books}">
-            <form th:action="@{/jobManage/{id} (id=${book.id})}" method="post">
+            <form th:action="@{/managebooks/{id} (id=${book.id})}" method="post">
+
                 <div th:replace="base :: displayInfo"></div>
                 <br />
                 <div class="btn-group" style="width:100%">
-                    <input type="hidden" th:value="${book.author}"/>
+                    <-- <input type="hidden" th:value="${book.id}"/> -->
                     <button id="details" style="width:33%" type="submit" value="details" name="action">Show Details</button>
                     <button id="edit" style="width:33%" type="submit" value="edit" name="action">Edit Book</button>
                     <button id="delete" style="width:33%" type="submit" value="delete" name="action">Delete Book</button>
@@ -64,7 +65,7 @@
             </form>
         </div>
         <hr>
-        <p><a href="/">Go Back To Jobs List</a></p>
+        <p><a href="/">Go Back To Book List</a></p>
         <div th:replace="base :: footer"></div>
     </div>
     <!-- End Process HTML Page-->

@@ -24,7 +24,7 @@
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Jobs-<span style="font-size:30px">&#x1D19;</span>-Us</a>
+        <a class="navbar-brand" href="#">Books-<span style="font-size:30px">&#x1D19;</span>-Us</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -45,7 +45,6 @@
         </div>
     </nav>
     <!-- End Navigation Bar -->
-
     <!-- Process HTML Page -->
     <div class="container">
         <div th:replace="base :: header"></div>
@@ -56,12 +55,12 @@
 <!--^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +  -->
             <div class="row">
                 <div class="col-md-3"><b>Title:</b></div>
-                <div class="col-md-9"><label for="title"></label><input id="title" type="text" placeholder="Title" th:field="*{title}" /></div>
+                <div class="col-md-9"><label for="title"></label><input id="title" type="text" placeholder="Title" th:field="*{title}" size="35" /></div>
             </div>
             <br />
             <div class="row">
                 <div class="col-md-3"><b>Author:</b></div>
-                <div class="col-md-9"><label for="author"></label><input id="author" type="text" placeholder="Author" th:field="*{author}" /></div>
+                <div class="col-md-9"><label for="author"></label><input id="author" type="text" placeholder="Author" th:field="*{author}" size="35" /></div>
             </div>
             <br />
             <div class="row">
@@ -71,11 +70,18 @@
             <br />
             <div class="row">
                 <div class="col-md-3"><b>SKU Number:</b></div>
-                <div class="col-md-9"><label for="sku"></label><input id="sku" type="text" placeholder="SKU" th:field="*{sku}" /></div>
+                <div class="col-md-9"><label for="sku"></label><input id="sku" type="text" placeholder="SKU" th:field="*{sku}" size="35" /></div>
             </div>
+            <br />
             <div class="row">
                 <div class="col-md-3"><b>In Stock:</b></div>
-                <div class="col-md-9"><label for="instock"></label><input id="instock" type="text" placeholder="InStock" th:field="*{inStock}" /></div>
+                <!-- <div class="col-md-9"><label for="instock"></label><input id="instock" type="text" placeholder="InStock" th:field="*{inStock}" /></div> -->
+                <div class="col-md-9">
+                    <select name="inStock">
+                        <option value="Yes" selected>Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
             </div>
             <br />
             <div class="row">
